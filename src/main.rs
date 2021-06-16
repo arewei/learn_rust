@@ -6,6 +6,8 @@ fn main() {
         println!("s2 = {}", s2);
     }
 
+
+    
     println!("s1 = {}", s1);
 
     println!("Hello, world!");
