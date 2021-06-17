@@ -1,11 +1,14 @@
+use rand::{thread_rng, Rng};
+use rand::distributions::Alphanumeric;
+
 fn main() {
-    let s1 = String::from("abc");
+    let rand_string: String = thread_rng()
+        .sample_iter(&Alphanumeric)
+        .take(30)
+        .map(char::from)
+        .collect();
 
-    {
-        let s2 = &s1;
-        println!("s2 = {}", s2);
-    }
+    println!("{}", rand_string);
 
-    println!("s1 = {}", s1);
-    println!("Hello, world again!");
+    // GbaXwF1WawIXQssS8izNnWLWBrBLT5
 }
