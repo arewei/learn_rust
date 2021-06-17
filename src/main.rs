@@ -9,4 +9,7 @@ fn main() {
         .collect();
 
     println!("{}", rand_string);
+
+
+    
 }
