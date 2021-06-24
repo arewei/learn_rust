@@ -26,5 +26,9 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     test::test_read_write();
 
+    test::test4();
+
+    test::test_string();
+
     Ok(())
 }

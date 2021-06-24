@@ -16,7 +16,7 @@ pub fn test_file() -> Result<()> {
 
     file.read_to_string(&mut s)?;
 
-    println!("{}", s);
+    // println!("{}", s);
 
     Ok(())
 }
