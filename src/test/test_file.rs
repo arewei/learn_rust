@@ -7,9 +7,10 @@ use std::path::Path;
 
 use error_chain::error_chain;
 
+#[allow(dead_code)]
 pub fn test_file() -> Result<()> {
     let path = Path::new("/Users/huangzhiwei/Desktop/temp/error-log.txt");
-    let display = path.display();
+    // let display = path.display();
 
     let mut file = File::open(&path)?;
     let mut s = String::new();
@@ -21,10 +22,11 @@ pub fn test_file() -> Result<()> {
     Ok(())
 }
 
+#[allow(dead_code)]
 pub fn test_read_write() -> Result<()> {
     let path = "/Users/huangzhiwei/Desktop/temp/error-log1.txt";
     let mut output = File::create(path)?;
-    write!(output, "Rust\n💖\nFun");
+    write!(output, "Rust\n💖\nFun")?;
 
     let input = File::open(path)?;
     let buffered = BufReader::new(input);

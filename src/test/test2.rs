@@ -2,10 +2,12 @@ struct Person {
     name: String,
 }
 
+#[allow(dead_code)]
 struct RefBoy<'a> {
     loc: &'a i32,
 }
 
+#[allow(dead_code)]
 impl Person {
     fn new(name: &str) -> Person {
         Person {
@@ -18,6 +20,7 @@ impl Person {
     }
 }
 
+#[allow(dead_code)]
 pub fn test2() {
     let day = 5;
 
@@ -28,6 +31,7 @@ pub fn test2() {
     }
 }
 
+#[allow(dead_code)]
 pub fn test4() {
     let peter = Person::new("Peter");
     peter.greeting()

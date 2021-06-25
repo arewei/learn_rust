@@ -11,6 +11,7 @@ use rand::thread_rng;
 use url::Position;
 use url::Url;
 
+#[allow(dead_code)]
 pub fn test3() -> Result<()> {
     let rand_string: String = thread_rng()
         .sample_iter(&Alphanumeric)
