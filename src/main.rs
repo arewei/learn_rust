@@ -1,6 +1,8 @@
 extern crate error_chain;
 
 use std::error::Error;
+use std::sync::Arc;
+use std::thread;
 
 mod phrases;
 mod algorithms;
@@ -30,7 +32,44 @@ fn main() -> Result<(), Box<dyn Error>> {
     //
     // test::test_string();
 
-    test::test_hashmap();
+    // test::test_hashmap();
+
+    // match test::double_arg(std::env::args()) {
+    //     Ok(n) => println!("{}", n),
+    //     Err(err) => println!("Error: {}", err),
+    // }
+
+    // 创建一个线程
+    // let new_thread = thread::spawn(move || {
+    //     // 再创建一个线程
+    //     thread::spawn(move || {
+    //         loop {
+    //             println!("I am a new thread.");
+    //         }
+    //     })
+    // });
+
+    // 等待新创建的线程执行完成
+    // new_thread.join().unwrap();
+    // println!("Child thread is finish!");
+
+    // 睡眠一段时间，看子线程创建的子线程是否还在运行
+    // thread::sleep_ms(10);
+
+    let numbers: Vec<_> = (0..20u32).collect();
+    let shared_numbers = Arc::new(numbers);
+
+    for _ in 0..10 {
+        let child_numbers = shared_numbers.clone();
+
+        let thread = thread::spawn(move || {
+            let local_numbers = &child_numbers[..];
+
+            println!("share value in new thread: {:?}, address: {:p}", local_numbers, &*local_numbers);
+        });
+
+        thread.join().unwrap();
+    }
 
     Ok(())
 }

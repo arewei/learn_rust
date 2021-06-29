@@ -1,5 +1,6 @@
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 pub fn test_hashmap() {
     let mut come_from = HashMap::new();
 
@@ -30,4 +31,35 @@ pub fn test_hashmap() {
     for person in &who {
         println!("{:?}", come_from.entry(person))
     }
+
+    let m = (1..20).fold(1usize, |mul, x| mul * x);
+    println!("m: {}", m);
+
+    let v = vec![1, 2, 3, 4, 5, 6];
+    let v_take = v.iter()
+        .cloned()
+        .take(2)
+        .collect::<Vec<_>>();
+    assert_eq!(v_take, vec![1, 2]);
+
+    let names = vec!["WaySLOG", "Mike", "Elton"];
+    let scores = vec![60, 80, 100];
+    let score_map: HashMap<_, _> = names.iter()
+        .zip(scores.iter())
+        .collect();
+    println!("{:?}", score_map);
+
+    let v = vec![1u64, 2, 3, 4, 5, 6];
+    let val = v.iter()
+        .enumerate()
+        // 迭代生成标，并且每两个元素剔除一个
+        .filter(|&(idx, _)| idx % 2 == 0)
+        // 将下标去除,如果调用unzip获得最后结果的话，可以调用下面这句，终止链式调用
+        // .unzip::<_,_, vec<_>, vec<_>>().1
+        .map(|(_, val)| val)
+        // 累加 1+3+5 = 9
+        .fold(0u64, |sum, acm| sum + acm);
+
+
+    println!("{}", val);
 }
