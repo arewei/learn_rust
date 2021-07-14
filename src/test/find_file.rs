@@ -9,11 +9,13 @@ use glob::glob;
 
 // use walkdir::WalkDir;
 
+#[allow(dead_code)]
 pub fn is_pic(path: &str) -> bool {
     path.contains(".png") ||
         path.contains(".jpeg") || path.contains(".jpg")
 }
 
+#[allow(dead_code)]
 fn find_pic(path: PathBuf) -> Result<String> {
     let input = File::open(path)?;
     let result = BufReader::new(input)
@@ -25,6 +27,7 @@ fn find_pic(path: PathBuf) -> Result<String> {
     Ok(result)
 }
 
+#[allow(dead_code)]
 pub fn find_file() -> Result<()> {
     // WalkDir::new("/Users/huangzhiwei/WeChatProjects/annie-zheng-bao 2/pages")
     //     .follow_links(false)
