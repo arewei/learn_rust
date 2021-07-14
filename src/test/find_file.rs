@@ -9,7 +9,7 @@ use glob::glob;
 
 // use walkdir::WalkDir;
 
-fn is_pic(path: &str) -> bool {
+pub fn is_pic(path: &str) -> bool {
     path.contains(".png") ||
         path.contains(".jpeg") || path.contains(".jpg")
 }
@@ -37,7 +37,8 @@ pub fn find_file() -> Result<()> {
     glob("/Users/huangzhiwei/WeChatProjects/annie-zheng-bao 2/pages/**/*.wxml")?
         .filter_map(|e| e.ok())
         .map(|e| find_pic(e))
-        .for_each(|e| println!("{}", e.unwrap_or("".to_string())));
+        .flatten()
+        .for_each(|e| println!("{}", e));
 
     Ok(())
 }

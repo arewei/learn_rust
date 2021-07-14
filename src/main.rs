@@ -71,7 +71,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     //     thread.join().unwrap();
     // }
 
-    test::find_file();
+    // let _a = test::find_file();
 
+    let _a = test::find();
     Ok(())
 }
